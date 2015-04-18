@@ -16,5 +16,6 @@ echo "<h2><font>၀န္ေဆာင္မႈ</font></h2>";
 
 
 <h2><font style="color: #353F45">၀န္ေဆာင္မႈ</font></h2>
+<h2><font style="color: #353F45">ေကာင္းမြန္မူရွိေစရန္</font></h2>
 </body>
 </html>  
