@@ -1,0 +1,173 @@
+<!DOCTYPE html> 
+
+<html> 
+<head> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=320,user-scalable=no">
+<title>Education</title> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+});
+</script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+
+<!--<link rel="stylesheet" href="themes/android-theme.css" />
+<script type="text/javascript">
+var DEBUG_ANDROID_THEME=true
+</script>
+<script type="text/javascript" src="jquery.mobile.android-theme.js"></script>
+-->
+<style type="text/css">
+
+.ui-body-c {    background-image: url(ebg.jpeg) !important;
+				background: width: 100%;  background-size: 100%;
+}
+#custom-collapsible {
+    margin-left: 8px !important; 
+    border-width: 0px !important; 
+    background:  rgba(0,50,0,0.6) !important;
+}
+
+#custom-collapsible h1 a{
+    border-width: 2px !important; 
+    background:  rgba(0,50,0,0.6) !important;
+	color: #FDFDFD;
+}
+
+p, h2{
+	font-style:italic;
+	font-size:12px;
+	text-align:center;
+}
+
+</style>
+
+
+</head> 
+<body> 
+	<div data-role="page">
+		<div data-role="header" data-position="fixed" data-theme="a">
+      		<a href="#" data-role="button" data-icon="back" data-rel="back" class="hide-on-android" data-theme="c">Back</a>
+			<h1>My Education Website</h1>
+			<a href="http://www.kyawphyonaing.sakura.ne.jp/index.html" data-role="button" data-icon="home" class="ui-btn-right" id="home" data-theme="c">Home</a>
+		</div><!-- /header -->
+		<div data-role="content" data-theme="c">
+        	<ul id="list_todo" data-role="listview" data-inset="true" data-theme="b">
+		        <li>
+		            <a href="../e_mail/index.html">
+		                <h2>Request And Suggest</h2>
+		                <p>If you want to learn anything,<br>If you want to say something,<br>Please sent the mail. </p>
+		            </a>
+		        </li>
+		    </ul>	
+        	<div data-role="collapsible" id="custom-collapsible" >
+      		<h1>IT Ebooks (Myanmar)</h1>
+            	<div data-role="collapsible" id="custom-collapsible">
+        		<h1>Web_tutorials</h1>
+        		<ul id="list_todo" data-role="listview" data-inset="true" data-theme="a">
+		        <li><a href="https://www.dropbox.com/s/f5xd0sucj6p41qy/pro_php_programming.pdf">
+		            <p>pro_php_programming</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/f4kro5es2x9s5bj/php_and_mysql_for_dummies_4th_edition.pdf">
+		            <p>php_and_mysql_for_dummies_4th_edition</p>
+		            </a>
+		        </li>
+		    	</ul>
+     			</div>
+                <div data-role="collapsible" >
+        		<h1>Programmings</h1>
+        		<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">C++</a>
+                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">Java</a>
+     			</div>
+				<div data-role="collapsible">
+        		<h1>Networkings</h1>
+        		<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">Web_tutorials</a>
+                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">Web_tutorials</a>
+     			</div>
+				<div data-role="collapsible">
+        		<h1>Internet_tutorials</h1>
+        		<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">Web_tutorials</a>
+                <a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right">Web_tutorials</a>
+     			</div>
+            </div>
+            <div data-role="collapsible" id="custom-collapsible">
+      		<h1>IT Ebooks (English)</h1>
+            <ul id="list_todo" data-role="listview" data-inset="true" data-theme="a">
+            	<li><a href="https://www.dropbox.com/s/2ad7ar47op7m3he/php_and_mysql_24-hour_trainer.pdf">
+		            <p>php_and_mysql_24-hour_trainer</p>
+		            </a>
+		        </li>
+		        <li><a href="https://www.dropbox.com/s/f5xd0sucj6p41qy/pro_php_programming.pdf">
+		            <p>pro_php_programming</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/wdshxqfbsq5vw91/php_and_mysql_for_dummies_3rd_edition.pdf">
+		            <p>php_and_mysql_for_dummies_3th_edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/f4kro5es2x9s5bj/php_and_mysql_for_dummies_4th_edition.pdf">
+		            <p>php_and_mysql_for_dummies_4th_edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/objtrsfgt8yg1w3/php_mysql_javascript__html5_all-in-one_for_dummies.pdf">
+		            <p>php_mysql_javascript_html5_all-in-one_for_dummies</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/v66wlp74kf6va4z/php_and_mysql_web_development_4th_edition.pdf">
+		            <p>php_and_mysql_web_development_4th_edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/t9s0kmsa8ozaf95/learning_php_mysql_javascript_and_css_2nd_edition.pdf">
+		            <p>learning_php_mysql_javascript_and_css_2nd_edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/z1h0gxz9o3megbp/beginning_php_and_mysql_from_novice_to_professional_4th_edition.pdf">
+		            <p>beginning_php_and_mysql_from_novice_to_professional_4th_edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/mlmixfg2kajmpc7/build_your_own_database_driven_web_site_using_php.pdf">
+		            <p>build_your_own_database_driven_web_site_using_php</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/ngmsc6ujcgraqcj/GFX-PHP.and.MySQL.for.Dynamic.Web.Sites.Visual.QuickPro.Guide.4th.Edition.pdf">
+		            <p>GFX-PHP.and.MySQL.for.Dynamic.Web.Sites.Visual.QuickPro.Guide.4th.Edition</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/e4ti2qzsin2umht/learning_php_5.pdf">
+		            <p>learning_php_5</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/ylb88mku27ufqnf/learning_php_mysql_and_javascript.pdf">
+		            <p>learning_php_mysql_and_javascript</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/r75r4e1pntnt9n9/Dreamweaver%20CS6%20Mobile%20and%20Web%20Development%20with%20HTML5%2C%20CSS3%2C%20and%20jQuery%20Mobile.pdf">
+		            <p>Dreamweaver CS6 Mobile and Web Development with HTML5, CSS3, and jQuery Mobilet</p>
+		            </a>
+		        </li>
+                <li><a href="https://www.dropbox.com/s/656pef0pg75okwe/Head%20First%20JavaScript.pdf">
+		            <p>Head First JavaScript</p>
+		            </a>
+		        </li>
+		    </ul>
+            </div>
+    	</div><!-- /content -->
+		<div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+		<ul>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/PCwebsite/index.php" data-icon="arrow-u" target="_blank">To PC Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/game/index.html" data-icon="info" data-transition="slideup">Game Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/index.html" data-icon="star" data-transition="pop">Music Website</a></li>
+		</ul>
+		</div>
+    </div><!-- /footer -->
+	</div><!-- /page -->
+</body>
+</html>

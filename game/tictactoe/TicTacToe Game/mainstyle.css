@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+.blokje{
+	width:100px;
+	font-size:40px;
+ Font-Family:Comic Sans MS,Arial,Verdana;
+ Text-Align:center;
+ background-color:white;
+}
+ .knopje{
+ Width:110px;
+ font-size:16px;
+ Font-Family:Comic Sans MS,Arial,Verdana;
+ }
+ #autmat{
+	 Width:135px;
+ font-size:16px;
+ Font-Family:Comic Sans MS,Arial,Verdana; 
+ }
+ td{
+	 width:100px;
+	 font-size:16px;
+	 Font-Family:Comic Sans MS,Arial,Verdana;
+ }
+ 
+ 
+ 
+p
+{
+    text-align:center;
+     Font-Family:Comic Sans MS,Arial,Verdana;
+    font-size:10px;
+
+ 
+}
+ 
+body
+{
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+	background-image:url(bg.jpg);
+}
+

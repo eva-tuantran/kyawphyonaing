@@ -1,0 +1,195 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320,user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Memory Game</title>
+
+<style type="text/css" >
+h1 {
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:30px;
+	border-style: solid;
+	width: 300px;
+	background-color:#999;
+	color: #00C;
+}
+.footer {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:10px;
+}
+</style>
+
+<script language="javascript" type="application/javascript">
+
+	//Create Card Images Array
+	var pics = new Array();
+	//Loop Through Array & Create Image Files Names
+	for( i=0; i<=8; i++ ) {
+		pics[i] = new Image(); 
+		pics[i].src = 'image'+i+'.jpg';
+	}
+
+	//Initialize Variables
+	var map = new Array(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8);
+	var user = new Array();
+	var cardArray = new Array();
+	var clickArray = new Array(0,0);
+	var timer, secs, mins, counterTime, id=0, allowClick, gameStart, gameEnd;
+
+//Set Up Game Board
+function startGame() {
+		
+	var gameDiv = document.getElementById('game');
+	
+	var gameTable='<table cellpadding="3" cellspacing="3" border="0">';
+	
+	for(rows=0; rows<=3; rows++) {
+		gameTable += '<tr>';
+		for(columns=0; columns<=3; columns++)gameTable+='<td align="center"><a href="javascript:showCardPicture('+((4*rows)+columns)+')" 	onclick="this.blur()"><img src="image0.jpg" name="img'+((4*rows)+columns)+'" alt="" border="0"></a></td>';
+		gameTable+='</tr>';
+	}
+	gameTable+='</table><br><form name="gameForm"><input type="button" value="Loading Cards" name="formBtn" onclick="init()"></form>';
+	gameDiv.innerHTML = gameTable;
+	init();
+}
+
+//Initialize the Game
+function init() {
+	clearTimeout(id);
+	for(i=0; i<=15; i++)user[i]=0;
+	timer=0;
+	mins=0;
+	secs=0;
+	counterTime=0;
+	gameEnd=0;
+	allowClick=true;
+	document.forms["gameForm"].formBtn.value="Loading Game";
+	gameStart = setTimeout('gameGoing()', 100);
+//	id = setInterval('startClock()', 995);
+	mixCards();
+	for(i=0; i<=15; i++) { //Whole Number between 0-15 (16 cards)
+		document.images[('img'+i)].src = "image0.jpg";
+		document.images[('img'+i)].alt = "";
+	}
+}
+
+function gameGoing() {
+	switch (document.forms["gameForm"].formBtn.value) {
+		case "Loading Game":
+			document.forms["gameForm"].formBtn.value = "Start Game";
+		case "Start Game":
+			document.forms["gameForm"].formBtn.onclick = clockGoing();
+			break;
+	}
+}
+
+function clockGoing() {
+	id = setInterval('startClock()', 995);
+	
+}
+
+//Start the Clock
+function startClock() {
+	mins = Math.floor(timer/60);
+	secs = (timer - (mins*60) )+'';
+	if(secs.length==1) { secs = "0" + secs };
+	if(timer==10){alert("Time up!\nBut You can play without Timer.")}
+	timer++;
+	document.forms["gameForm"].formBtn.value=" " +mins+ ":" +secs+ " ";
+}
+
+//Mix Up the Cards
+function mixCards() {
+	for(z=0; z<5; z++) { // whole number between 0 and 4. Number of different card images (not doubles).
+		for(x=0; x<=15; x++) {
+			cardArray[0] = Math.floor( Math.random() * 16 );
+			cardArray[1] = map[ cardArray[0] ];
+			cardArray[2] = map[x];
+			map[x] = cardArray[1]; //map[x <= 15] = map[whole # btwn 0 and 15]
+			map[ cardArray[0] ] = cardArray[2]; // map[whole number between 0 and 15] = map[x <= 15]
+		}
+	}
+}
+
+function showCardPicture(but) {
+	if(allowClick) {
+		allowClick=false; 
+		document.images[('img'+but)].src = 'image'+map[but]+'.jpg';
+		document.images[('img'+but)].alt = 'Image '+map[but];
+		if(counterTime==0) {
+			counterTime++;
+			clickArray[0]=but;
+			allowClick=true;
+		} else {
+			clickArray[1]=but;
+			counterTime=0;
+			setTimeout('returntoold()', 600);
+		}
+	}
+}
+
+function returntoold() {
+	if( (clickArray[0] == clickArray[1]) && (!user[ clickArray[0] ]) ) { 
+		document.images[('img'+clickArray[0])].src = "image0.jpg";
+		document.images[('img'+clickArray[0])].alt = "";
+		allowClick = true;
+	} else {
+		if( map[ clickArray[0] ] != map[ clickArray[1] ] ) { //If # in clickArray[0] is NOT equal to # in clickArray[1]
+			if( user[ clickArray[0] ] == 0 ) {
+				document.images[('img'+clickArray[0])].src = "image0.jpg";
+				document.images[('img'+clickArray[0])].alt = "";
+			}
+			if( user[ clickArray[1] ] == 0 ) {
+				document.images[('img'+clickArray[1])].src = "image0.jpg";
+				document.images[('img'+clickArray[1])].alt = "";
+			}
+		}
+		if( map[ clickArray[0] ] == map[ clickArray[1] ] ) {
+			if( user[clickArray[0]] == 0 && user[clickArray[1]] == 0 )gameEnd++;
+				user[clickArray[0]] = 1;
+				user[clickArray[1]] = 1;
+		}
+		if( gameEnd >= 8 ) {
+			alert('You Won Memory Game in '+document.forms["gameForm"].formBtn.value+'!' );
+			startGame();
+		} else {
+			allowClick = true;
+		}
+	}
+}
+
+</script>
+
+
+
+</head>
+
+<body>
+
+<center>
+
+<h1>Memory Game</h1>
+
+<div id="game">
+
+</div><!--end Game div-->
+
+<script language="javascript">
+
+	window.onload=startGame;
+</script>
+<button onClick="init()">restart</button>
+<p>
+<a href="../index.html" ><img src="Home_icon.gif" width="300" height="50"></a>
+</p>
+<div class="footer">
+
+</div><!--end Footer div-->
+
+</center>
+
+
+</body>
+</html>

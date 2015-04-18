@@ -1,0 +1,133 @@
+			body{
+				background: #ACD1E9; 
+				margin: 0; 
+				padding: 0; 
+				padding-top: 10px;
+				text-align: center;
+			}
+			
+			
+			#wrapper{
+				width: 386px;
+				height: auto;
+				margin: 0 auto;
+				text-align: center;
+			}
+			div.players{
+				width: 30em;
+				text-align: left;
+				margin: 0 auto;
+			}
+			.col button, .col input[type = "button"]{
+				width: 9.5em;
+				height: 9.5em;
+				position: relative;
+				border: 1px solid #2A82D7;
+				float: left;
+				cursor: pointer;
+			}
+			.col button:hover,.flip input:hover{
+				background: #000;
+				opacity: 0.5;
+				-moz-opacity: 0.5;
+				filter:alpha(opacity=5);
+			}
+			.flip{
+			 	position: relative;
+			 	float: left;
+				border: 1px solid #2A82D7;
+				background: #7F7F7F;
+			}
+
+			span.letter-x{
+				color: #ff0000 !important;
+				margin: 0 auto;
+				z-index: 99999;
+				font-size: 100px;
+				text-align: center;
+			}
+			span.letter-o{
+				color: #49BCED !important;
+				margin: 0 auto;
+				z-index: 99999;
+				font-size: 100px;
+				text-align: center;
+			}
+			.x, .o{
+				display: none;
+			}
+
+			button.reload{
+				width: 7em;
+				height: 2em;
+				font-weight: bold;
+				border: 1px solid #0F3B68;
+				cursor: pointer;
+				background: #18B0F2;
+				margin-bottom: 1em;
+				color: #003366;
+			}
+			button.reload:hover{
+				color: #9D2E2C;
+			}
+			div.created{
+				font-size: 14px;
+				color: #ffffff;
+				width: 10em;
+				margin: 0 auto;
+			}
+			
+			div.players span{
+				margin-left: 0.25em	;
+				color: #ff0000;
+				font-size: 12px !important;
+			}
+			div.players input{
+				border: 1px solid #18B0F2;
+				padding: 0.25em;
+				direction: rtl;
+				margin-left: 0.5em;
+				text-align: center;
+				margin-bottom: 0.15em;
+				color: #9D2E2C;
+			}
+			div.players input:hover{
+				background: #D0D9E6;
+			}
+			div.players input:focus{
+				background: #FAFF77;
+
+			}
+			div.players label{
+				color: #003366;
+				margin-bottom: 0.15em;
+			}
+			div.scores legend, div.scores span{
+				color: #ff0000;
+			}
+			div.scores{
+				width: 20em;
+				margin: 0 auto;
+				text-align: left;
+				color: #003366;
+				font-weight: bold;
+			}
+			div.scores span{
+				font-size: 14px;
+			}
+			.msg{
+				margin-top: 1em;
+				width: 25em;
+				margin: 0 auto;
+				text-align: center;
+				background: #443266;
+				border: 1px solid #B0E57C;
+				border-radius: 8px 8px 8px 8px;
+				moz-border-radius: 8px 8px 8px 8px;
+				webkit-border-radius: 8px 8px 8px 8px;
+				padding: 0.75em 0.65em 0.75em 0.65em;
+			}
+			span.error{
+				font-size: 16px;
+				color: #FFFFFF;
+			}

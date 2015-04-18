@@ -1,0 +1,174 @@
+<!DOCTYPE html>  
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=320,user-scalable=no">
+<script type="text/javascript" src="jsWaffle.js"></script>
+<script type="text/javascript">
+// 変数の初期化
+var block_width = 32; // ブロック１つの大きさ
+var canvas_width = 320; // キャンバスのサイズを指定
+var canvas_height = 416;// 32px * 13;
+var blocks = []; // ブロックデータを表わす
+var block_cols = canvas_width / block_width; // ブロックの列数
+var block_rows = canvas_height / block_width;// ブロックの行数
+var block_colors = ["rgba(0,0,0,0)","rgba(255,0,0,1.0)", // ブロックの色
+	"rgba(0,255,0,1.0)","rgba(0,0,255,1.0)","rgba(0,255,255,1.0)"];
+var context; // 描画用のコンテキスト用
+var x_table = [ 0, 1, 0, -1]; // 上右下左を表わすテーブル
+var y_table = [-1, 0, 1,  0];
+var image = new Image(); // おまけ画像の読み込み
+image.src = "photo99.jpg";
+var score = 0; // ゲームのスコア
+// いろいろな初期設定
+function initGame() {
+	// キャンバスの初期化
+	var canvas = $("a_canvas");
+	context = canvas.getContext("2d");
+	canvas.width = canvas_width;
+	canvas.height = canvas_height;
+	canvas.onmousedown = function (e){ // PC用
+		canvasDownHandler(e, e.pageX, e.pageY);
+	};
+	canvas.ontouchstart = function(e){ // Android用
+		canvasDownHandler(e, e.touches[0].pageX, e.touches[0].pageY);
+	};
+	// ゲームのリセットメニューを追加
+	droid.setMenuItem(0, true, "新規ゲーム", "", newGame);
+	// 新規ゲーム開始
+	newGame();
+}
+// 新規ゲーム
+function newGame() {
+	score = 0;
+	initBlock();
+	drawBlocks();
+}
+// ブロックの位置(x,y)を配列のインデックス番号で返す
+function xy(x, y) { return y * block_cols + x; }
+// ブロックを初期化する
+function initBlock() {
+	for (var i = 0; i < block_cols * block_rows; i++) {
+		blocks[i] = Math.floor(Math.random() * 4 + 1);
+	}
+}
+// ブロックを描画する
+function drawBlocks() {
+	// 画面を初期化
+	context.clearRect(0,0,canvas_width,canvas_height);
+	// プレゼント画像を描画
+	context.drawImage(image, 0, 0);
+	// ブロックを描画
+	for (var y = 0; y < block_rows; y++) {
+		for (var x = 0; x < block_cols; x++) {
+			var v = blocks[xy(x,y)];
+			context.beginPath();
+			context.fillStyle = block_colors[v];
+			context.fillRect(
+				x * block_width,
+				y * block_width,
+				block_width, block_width);
+		}
+	}
+}
+// ブロックをタッチしたときの処理
+function canvasDownHandler(e, px, py) {
+	var x = Math.floor(px / block_width);
+	var y = Math.floor(py / block_width);
+	e.preventDefault();
+	droid.log(x + "," + y + "=" + blocks[xy(x,y)]); // どのブロックをさわったか表示
+	var bcolor = blocks[xy(x,y)];
+	if (bcolor == 0) return; // 既に空ならば処理しない
+	// 隣接するブロックがあるかどうかテスト
+	var count = checkBlock(x, y, bcolor);
+	if (count <= 1) return; // 隣接する色がなければ消せない
+	if (count > 1) { // スコアに加算
+		score += Math.pow(count,2);
+		$("info").innerHTML = "SCORE " + score;
+	}
+	// ブロックを消す処理
+	// (1) 隣接するブロックを消す
+	removeBlock(x, y, bcolor);
+	drawBlocks();
+	// (2) 穴の空いた部分を寄せる処理を行う
+	setTimeout(moveBlocks, 500);
+}
+// 隣接するブロックがあるかどうか調べる
+function checkBlock(x, y, testColor) {
+	return checkBlock_r(x, y, testColor, [], false);
+}
+// 隣接するブロックを消す
+function removeBlock(x, y, removeColor) {
+	checkBlock_r(x, y, removeColor, [], true);
+}
+// 再帰的にブロックをチェックする
+function checkBlock_r(x, y, test, footprint, flagRemove) {
+	if (x < 0 || y < 0 || x >= block_cols || y >= block_rows) return 0;
+	var i = xy(x,y);
+	if (footprint[i]) return 0; // 既に訪問済みなら抜ける
+	if (blocks[i] != test) return 0; // 同じ色でなければ抜ける
+	footprint[i] = true;
+	if (flagRemove) blocks[i] = 0; // 消す
+	droid.log("foot:" + x + "," + y);
+	var count = 1;
+	for (var j = 0; j < 4; j++) { // 上下左右をチェック
+		count += checkBlock_r(
+			x + x_table[j], y + y_table[j],
+			test, footprint, flagRemove);
+	}
+	return count;
+}
+// 穴の空いた部分のブロックを寄せる処理
+function moveBlocks() {
+	// ブロックを下側に落とす
+	var tmp = createZeroArray(block_rows * block_cols);
+	for (var x = 0; x < block_cols; x++) {
+		var ny = block_rows - 1;
+		for (var y = block_rows - 1; y >= 0 ; y--) {
+			var v = blocks[xy(x,y)];
+			if (v == 0) continue;
+			tmp[xy(x, ny--)] = v;
+		}
+	}
+	blocks = tmp;
+	drawBlocks();
+	// ブロックを右側に寄せる
+	tmp = createZeroArray(block_rows * block_cols);
+	for (var y = 0; y < block_rows; y++) {
+		var nx = block_cols - 1;
+		for (var x = block_cols - 1; x >= 0 ; x--) {
+			var v = blocks[xy(x,y)];
+			if (v == 0) continue;
+			tmp[xy(nx--, y)] = v;
+		}
+	}
+	blocks = tmp;
+	// ちょっと待ってから描画する
+	setTimeout(drawBlocks, 500);
+	// ゲームクリアか判定する
+	if (checkGameClear()) {
+		setTimeout(function(){
+			alert("おめでとうございます！ゲームクリア!!" +
+				"スコア:" + score);
+			newGame();
+		}, 2000);
+	}
+}
+function checkGameClear() {　// ゲームクリアしたかどうか判定する関数
+	for (var i = 0; i < blocks.length; i++) {
+		if (blocks[i] != 0) return false;
+	}
+	return true;
+}
+function createZeroArray(cnt) { // 指定数の配列要素を作成する関数
+	var a = [];
+	for (var i=0; i<cnt; i++) a.push(0);
+	return a;
+}
+</script>
+<style> *{ padding:0px; margin:0px; } </style>
+</head><body onload="initGame()">
+	<canvas id="a_canvas"></canvas>
+	<div id="info">隣り合うブロックを消すゲームです</div>
+<p>
+<a href="../index.html" ><img src="Home_icon.gif" width="320" height="50"></a>
+</p>
+</body></html>

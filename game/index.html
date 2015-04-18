@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+
+<html> 
+<head> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=320,user-scalable=no">
+<title>My Game Website</title> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+});
+</script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+
+<!--<link rel="stylesheet" href="themes/android-theme.css" />
+<script type="text/javascript">
+var DEBUG_ANDROID_THEME=true
+</script>
+<script type="text/javascript" src="jquery.mobile.android-theme.js"></script>
+-->
+<style type="text/css">
+
+.ui-body-c {    background-image: url(gamebg.jpg) !important;
+				background: width: 100%;  background-size: 100%;
+}
+#button
+{
+		background:  rgba(0,0,0,0) !important;
+		color: #F60;
+}
+#custom-collapsible {
+    margin-left: 8px !important; 
+    border-width: 0px !important; 
+    background:  rgba(0,50,0,0.6) !important;
+}
+
+#custom-collapsible h1 a{
+    border-width: 2px !important; 
+    background:  rgba(0,50,0,0.6) !important;
+	color: #FDFDFD;
+}
+p {
+	font-style:italic;
+	font-size:12px;
+	text-align:center;
+}
+</style>
+
+
+</head> 
+<body> 
+	<div data-role="page">
+		<div data-role="header" data-position="fixed" data-theme="a">
+      		<a href="#" data-role="button" data-icon="back" data-rel="back" class="hide-on-android" data-theme="c">Back</a>
+			<h1>My Game Website</h1>
+			<a href="http://www.kyawphyonaing.sakura.ne.jp/index.html" data-role="button" data-icon="home" class="ui-btn-right" id="home" data-theme="c">Home</a>
+		</div><!-- /header -->
+		<div data-role="content" data-theme="c" style=" border-style:hidden;">
+        	
+        	<div data-role="collapsible"  id="custom-collapsible">
+      		<h1>Photo Puzzle Games</h1>
+            <a href="puzzle/8puzzle 2.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button" >8 puzzle</a>
+      		<a href="puzzle/15puzzle-2.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">15 puzzle</a>
+      		<a href="puzzle/24puzzle.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">24 puzzle</a>
+    		</div>
+            <div data-role="collapsible" id="custom-collapsible">
+      		<h1>Black and White Games</h1>
+            <a href="blackandwhite/mondai1.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">Easy</a>
+      		<a href="blackandwhite/mondai2.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">Hard</a>
+    		</div>
+            <div data-role="collapsible" id="custom-collapsible">
+      		<h1>Match tap Games</h1>
+            <a href="www/index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">style1</a>
+      		<a href="www/index2.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">style2</a>
+    		</div>
+            <div data-role="collapsible" id="custom-collapsible">
+      		<h1>Memory Games</h1>
+            <a href="memory/index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">flag game</a>
+    		</div>
+            <div data-role="collapsible" id="custom-collapsible">
+      		<h1>Tic-Tac-Toe Games</h1>
+            <a href="tictactoe/index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" id="button">tictactoe</a>
+    		</div>
+    	</div><!-- /content -->
+		< <div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+		<ul>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/PCwebsite/index.php" data-icon="arrow-u" target="_blank">To PC Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/index.html" data-icon="info" data-transition="slideup">music Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/education/index.html" data-icon="star" data-transition="pop">Education</a></li>
+		</ul>
+		</div>
+   <!-- /footer -->
+	</div><!-- /page -->
+</body>
+</html>

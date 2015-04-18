@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TIC-TAC-TOE</title>
+		<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
+		<link rel="stylesheet" media="screen and (max-width: 600px)" href = "css/max-width600px.css"/>
+		<link rel="stylesheet" media="screen and (min-width: 900px)" href = "css/min-width900px.css"/>
+		<link rel="stylesheet" media="screen and (min-width: 600px) and (max-width: 900px)" href = "css/minMax-width600-900px.css"/>
+		<link rel="stylesheet" media="screen and (max-device-width: 480px)" href = "css/max-width480px.css"/>
+		<!--[if lt IE 9]>
+     	 	<link rel="stylesheet" media="all" href = "css/minMax-width600-900px.css"/>
+   		 <![endif]-->
+		<script>
+			$(document).ready(function(){
+
+				$("#lastClicked").val("");
+				var lastClicked = $("#lastClicked");
+				// var sound = new Audio('click.wav');
+				
+				$("#player1").val("").removeAttr("disabled");
+				$("#player2").val("").removeAttr("disabled");
+				$(".player_1").html("");
+				$(".error").html("");
+				$(".score1").html("0").attr("style","display:none");
+				$(".score2").html("0").attr("style","display:none");
+				$(".col > .flip > input, .col > .flip > button").attr("disabled","disabled");
+				$("#start").removeAttr("disabled");
+				$("span.error").html("Tic Tac Toe buttons are disabled. Please enter your names and click the start button to begin the game.");
+				$("#one").bind('click', function(){
+					var elem = $(this);
+					 // sound.play();
+					 	if($("#button_1").val()==""){
+					 		if(lastClicked.val() == ""){
+								elem.flip({
+								direction:'lr',
+								speed: 350,
+								onBefore: function(){
+					
+										elem.html(elem.siblings('.x').html());
+										
+									}
+								});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+					 		}else{
+					 			if(lastClicked.val() == "X"){
+					 				elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+					
+										elem.html(elem.siblings('.o').html());
+										}
+									});
+									lastClicked.val("O");
+									elem.data('flipped',true);
+					 			}else{
+
+					 				elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+					
+										elem.html(elem.siblings('.x').html());
+										}
+									});
+									lastClicked.val("X");
+									elem.data('flipped',true);
+					 			}
+					 		}
+					 	}
+
+					 	if( ($("#one > button.button_1").text()=='X' && $(".flip > .button_2").text() == 'X' && $(".flip > .button_3").text() == 'X')||($(".flip > .button_1").text()=='X' && $(".flip > .button_4").text() == 'X' && $(".flip > .button_7").text() == 'X') || ($(".flip > .button_1").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_9").text() == 'X') ){
+					 				alert("X WIN");
+					 				$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+					 				lastClicked.val("");
+					 				$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+					 				$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+					 	}else if( ($(".flip > .button_1").text()=='O' && $(".flip > .button_2").text() == 'O' && $(".flip > .button_3").text() == 'O')||($(".flip > .button_1").text()=='O' && $(".flip > .button_4").text() == 'O' && $(".flip > .button_7").text() == 'O') || ($("#one > button.button_1").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_9").text() == 'O') ){
+					 				alert("O WIN");
+					 				$(".col > .flip > input, .col > .flip > button").attr("disabled","disabled");
+					 				lastClicked.val("");
+					 				$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+					 				$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+					 	}
+					 	var turn = $("#turn").val();
+					 	if(turn == "player1"){
+					 		$("#turn").val("player2");
+					 		$(".player_2").html("Your turn!");
+				 			$(".player_1").html("");
+					 	}else{
+					 		$("#turn").val("player1");
+					 		$(".player_1").html("Your turn!");
+					 		$(".player_2").html("");
+
+					 	}
+					 	$(".button_1").attr("disabled","disabled");
+				});
+
+				$("#two").live('click', function(){
+					var elem = $(this);
+					// sound.play();
+						if($("#button_2").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+								direction:'lr',
+								speed: 350,
+								onBefore: function(){
+					
+										elem.html(elem.siblings('.x').html());
+										
+									}
+								});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+					
+										elem.html(elem.siblings('.o').html());
+										
+									}
+								});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_1").text()=='X' && $(".flip > .button_2").text() == 'X' && $(".flip > .button_3").text() == 'X')||($(".flip > .button_2").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_8").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_1").text()=='O' && $(".flip > .button_2").text() == 'O' && $(".flip > .button_3").text() == 'O')||($(".flip > .button_2").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_8").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+						var turn = $("#turn").val();
+						if(turn == "player1"){
+							$("#turn").val("player2");
+							$(".player_2").html("Your turn!");
+							$(".player_1").html("");
+						}else{
+							$("#turn").val("player1");
+							$(".player_1").html("Your turn!");
+							$(".player_2").html("");
+
+						}
+						$(".button_2").attr("disabled","disabled");
+				});
+
+				$("#three").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_3").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_1").text()=='X' && $(".flip > .button_2").text() == 'X' && $(".flip > .button_3").text() == 'X')||($(".flip > .button_3").text()=='X' && $(".flip > .button_6").text() == 'X' && $(".flip > .button_9").text() == 'X') || ($(".flip > .button_3").text()=='X' && $("#five > button.button_5").text() == 'X' && $(".flip > .button_7").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_1").text()=='O' && $(".flip > .button_2").text() == 'O' && $(".flip > .button_3").text() == 'O')||($(".flip > .button_3").text()=='O' && $(".flip > .button_6").text() == 'O' && $(".flip > .button_9").text() == 'O') || ($(".flip > .button_3").text()=='O' && $(".flip > .button_5").text() == 'O' && $("#seven > button.button_7").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+						var turn = $("#turn").val();
+						if(turn == "player1"){
+							$("#turn").val("player2");
+							$(".player_2").html("Your turn!");
+							$(".player_1").html("");
+						}else{
+							$("#turn").val("player1");
+							$(".player_1").html("Your turn!");
+							$(".player_2").html("");
+
+						}
+						$(".button_3").attr("disabled","disabled");
+				});
+
+				$("#four").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_4").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_4").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_6").text() == 'X')||($(".flip > .button_1").text()=='X' && $(".flip > .button_4").text() == 'X' && $(".flip > .button_7").text() == 'X') ){
+								alert("X WIN");
+								$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+								lastClicked.val("");
+								$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+								$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_4").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_6").text() == 'O')||($(".flip > .button_1").text()=='O' && $(".flip > .button_4").text() == 'O' && $(".flip > .button_7").text() == 'O') ){
+								alert("O WIN");
+								$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+								lastClicked.val("");
+								$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+								$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+						var turn = $("#turn").val();
+						if(turn == "player1"){
+							$("#turn").val("player2");
+							$(".player_2").html("Your turn!");
+							$(".player_1").html("");
+						}else{
+							$("#turn").val("player1");
+							$(".player_1").html("Your turn!");
+							$(".player_2").html("");
+
+						}
+						$(".button_4").attr("disabled","disabled");
+				});
+				$("#five").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_5").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+								}
+							if( ($(".flip > .button_2").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_8").text() == 'X')||($(".flip > .button_4").text()=='X' && $(".flip > .button_5").text() == 'X' && $("#six > button.button_6").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+							}else if( ($(".flip > .button_2").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_8").text() == 'O')||($(".flip > .button_4").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_6").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+							}
+							var turn = $("#turn").val();
+							if(turn == "player1"){
+								$("#turn").val("player2");
+								$(".player_2").html("Your turn!");
+								$(".player_1").html("");
+							}else{
+								$("#turn").val("player1");
+								$(".player_1").html("Your turn!");
+								$(".player_2").html("");
+
+							}
+							$(".button_5").attr("disabled","disabled");
+				});
+				$("#six").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_6").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_6").text()=='X' && $(".flip > .button_3").text() == 'X' && $(".flip > .button_9").text() == 'X')||($(".flip > .button_4").text()=='X' && $(".flip > .button_5").val() == 'X' && $(".flip > .button_6").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_6").text()=='O' && $(".flip > .button_3").text() == 'O' && $(".flip > .button_9").text() == 'O')||($(".flip > .button_4").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_6").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+					var turn = $("#turn").val();
+					if(turn == "player1"){
+						$("#turn").val("player2");
+						$(".player_2").html("Your turn!");
+						$(".player_1").html("");
+					}else{
+						$("#turn").val("player1");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+					}
+					$(".button_6").attr("disabled","disabled");
+				});
+
+				$("#seven").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_7").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_7").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_3").text() == 'X')||($(".flip > .button_7").text()=='X' && $(".flip > .button_1").text() == 'X' && $(".flip > .button_4").text() == 'X') || ($(".flip > .button_9").text()=='X' && $(".flip > .button_8").text() == 'X' && $(".flip > .button_7").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_7").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_3").text() == 'O')||($(".flip > .button_7").text()=='O' && $(".flip > .button_1").text() == 'O' && $(".flip > .button_4").text() == 'O') || ($(".flip > .button_9").text()=='O' && $(".flip > .button_8").text() == 'O' && $("#seven > button.button_7").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+					var turn = $("#turn").val();
+					if(turn == "player1"){
+						$("#turn").val("player2");
+						$(".player_2").html("Your turn!");
+						$(".player_1").html("");
+					}else{
+						$("#turn").val("player1");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+
+					}
+					$(".button_7").attr("disabled","disabled");
+				});
+
+				$("#eight").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_8").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+					 			
+								}
+							}
+						}
+
+						if( ($(".flip > .button_2").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_8").text() == 'X')||($(".flip > .button_8").text()=='X' && $(".flip > .button_7").text() == 'X' && $(".flip > .button_9").text() == 'X') ){
+									alert("X WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_2").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_8").text() == 'O')||($(".flip > .button_8").text()=='O' && $(".flip > .button_7").text() == 'O' && $(".flip > .button_9").text() == 'O') ){
+									alert("O WIN");
+									$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+									lastClicked.val("");
+									$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+									$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+					var turn = $("#turn").val();
+					if(turn == "player1"){
+						$("#turn").val("player2");
+						$(".player_2").html("Your turn!");
+						$(".player_1").html("");
+					}else{
+						$("#turn").val("player1");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+
+					}
+					$(".button_8").attr("disabled","disabled");
+				});
+
+				$("#nine").live('click', function(){
+					// sound.play();
+					var elem = $(this);
+						if($("#button_9").val()==""){
+							if(lastClicked.val() == ""){
+								elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+							}else{
+								if(lastClicked.val() == 'X'){		
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.o').html());
+											
+										}
+									});
+					 			lastClicked.val("O");
+					 			elem.data('flipped',true);
+								}else{
+									elem.flip({
+									direction:'lr',
+									speed: 350,
+									onBefore: function(){
+						
+											elem.html(elem.siblings('.x').html());
+											
+										}
+									});
+					 			lastClicked.val("X");
+					 			elem.data('flipped',true);
+								}
+							}
+						}
+						if( ($(".flip > .button_1").text()=='X' && $(".flip > .button_5").text() == 'X' && $(".flip > .button_9").text() == 'X')||($(".flip > .button_3").text()=='X' && $(".flip > .button_6").text() == 'X' && $(".flip > .button_9").text() == 'X') || ($(".flip > .button_9").text()=='X' && $(".flip > .button_8").text() == 'X' && $(".flip > .button_7").text() == 'X') ){
+								alert("X WIN");
+								$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+								lastClicked.val("");
+								$(".score1").html(parseInt($(".score1").text()) + parseInt(1) );
+								$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}else if( ($(".flip > .button_1").text()=='O' && $(".flip > .button_5").text() == 'O' && $(".flip > .button_9").text() == 'O')||($(".flip > .button_3").text()=='O' && $(".flip > .button_6").text() == 'O' && $(".flip > .button_9").text() == 'O') || ($(".flip > .button_9").text()=='O' && $(".flip > .button_8").text() == 'O' && $(".flip > .button_7").text() == 'O') ){
+								alert("O WIN");
+								$(".col > .flip > input,.col > .flip > button").attr("disabled","disabled");
+								lastClicked.val("");
+								$(".score2").html(parseInt($(".score2").text()) + parseInt(1) );
+								$("#start").removeAttr("disabled").css("background-color","#18B0F2");
+						}
+					var turn = $("#turn").val();
+					if(turn == "player1"){
+						$("#turn").val("player2");
+						$(".player_2").html("Your turn!");
+						$(".player_1").html("");
+					}else{
+						$("#turn").val("player1");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+
+					}
+					$(".button_9").attr("disabled","disabled");
+				});
+
+				$("#start").live('click', function(){
+					if($("#player1").val() == "" || $("#player2").val() == ""){
+						$(".error").html("Please enter your name(s)!");
+					}else if($(".score1").text() !=0 || $(".score2").text() !=0){
+							$("#player1").attr("disabled","disabled");
+						$("#player2").attr("disabled","disabled");
+						$(this).attr("disabled", "disabled").css("background-color","#EEEEEE");
+						$("#clear").attr("disabled", "disabled").css("background-color","#EEEEEE");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+						$(".error").html("Enjoy!");
+						$("label.play1").html($("#player1").val()+" : ");
+						$("label.play2").html($("#player2").val()+" : ");
+						$(".score1").html($("span.score1").text());
+						$(".score1").removeAttr("style");
+						$(".score2").html($("span.score2").text());
+						$(".score2").removeAttr("style");
+						$("div.col > .flip > input,div.col > .flip > button").removeAttr("disabled");
+						 // if($(elem).data('flipped')){
+						 // 	$(elem).revertFlip();
+						 // 	// Unsetting the flag:
+						 // 	$(elem).data('flipped',false)
+						 // }
+						
+						if($("#one").data('flipped')){
+							$("#one").revertFlip();
+							// Unsetting the flag:
+							$("#one").data('flipped',false);
+						}
+						if($("#two").data('flipped')){
+							$("#two").revertFlip();
+							// Unsetting the flag:
+							$("#two").data('flipped',false);
+						}
+						if($("#three").data('flipped')){
+							$("#three").revertFlip();
+							// Unsetting the flag:
+							$("#three").data('flipped',false);
+						}
+						if($("#four").data('flipped')){
+							$("#four").revertFlip();
+							// Unsetting the flag:
+							$("#four").data('flipped',false);
+						}
+						if($("#five").data('flipped')){
+							$("#five").revertFlip();
+							// Unsetting the flag:
+							$("#five").data('flipped',false);
+						}
+						if($("#six").data('flipped')){
+							$("#six").revertFlip();
+							// Unsetting the flag:
+							$("#six").data('flipped',false);
+						}
+						if($("#seven").data('flipped')){
+							$("#seven").revertFlip();
+							// Unsetting the flag:
+							$("#seven").data('flipped',false);
+						}
+						if($("#eight").data('flipped')){
+							$("#eight").revertFlip();
+							// Unsetting the flag:
+							$("#eight").data('flipped',false);
+						}
+						if($("#nine").data('flipped')){
+							$("#nine").revertFlip();
+							// Unsetting the flag:
+							$("#nine").data('flipped',false);
+						}
+
+					}else{
+						$("#player1").attr("disabled","disabled");
+						$("#player2").attr("disabled","disabled");
+						$(this).attr("disabled", "disabled").css("background-color","#EEEEEE");
+						$("#clear").attr("disabled", "disabled").css("background-color","#EEEEEE");
+						$(".player_1").html("Your turn!");
+						$(".player_2").html("");
+						$(".error").html("Enjoy!");
+						$("label.play1").html($("#player1").val()+" : ");
+						$("label.play2").html($("#player2").val()+" : ");
+						$(".score1").html($("span.score1").text());
+						$(".score1").removeAttr("style");
+						$(".score2").html($("span.score2").text());
+						$(".score2").removeAttr("style");
+						$("div.col > .flip > input,div.col > .flip > button").removeAttr("disabled");
+						
+					}
+				});
+
+				$("#clear").live('click', function(){
+					$(".player_1").html("");
+					$(".error").html("");
+					$("#player1").val("");
+					$("#player2").val("");
+				});
+			
+			});
+
+			function reloadNow(){
+				location.reload();
+			}
+		</script>
+	</head>
+	<body>
+		<header>Simple Tic Tac Toe Game</header>
+		<input type = "hidden" value = "" id = "lastClicked">
+		<input type = "hidden" id = "turn" value = "player1">
+		<div class = "msg"><span class = "error"></span></div>
+		<div class  = "players">
+			<label>Please enter player 1's name:</label><input type = "text" id = "player1" /><span class = "player_1"></span>
+			<br/><label>Please enter player 2's name:</label><input type = "text" id = "player2" /><span class = "player_2"></span>
+
+		</div>
+		<div class = "scores">
+			<legend>SCORES:</legend>
+			<label class = "play1"></label><span class = "score1"></span><br/>
+			<label class = "play2"></label><span class = "score2"></span>
+		</div>
+		<div id = "wrapper">
+			<button class = "reload" id = "start">Start</button>
+			<button class = "reload" id = "clear">Clear</button>
+			<button class = "reload" onclick = "reloadNow()">Reload</button>
+				<div class = "col">
+					<div class = "flip" id = "one">
+						<input type = "button" id = "button_1" class = "button_1" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_1"><span class = "letter-x">X</span></button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_1"><span class = "letter-o">O</span></button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "two">
+						<input type = "button" id = "button_2" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_2"><span class = "letter-x">X</span></button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_2"><span class = "letter-o">O</span></button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "three">
+						<input type = "button" id = "button_3" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_3"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_3"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "four">
+						<input type = "button" id = "button_4" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_4"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_4"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "five">
+						<input type = "button" id = "button_5" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_5"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_5"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "six">
+						<input type = "button" id = "button_6" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_6"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_6"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "seven">
+						<input type = "button" id = "button_7" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_7"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_7"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "eight">
+						<input type = "button" id = "button_8" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_8"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_8"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				<div class = "col">
+					<div class = "flip" id = "nine">
+						<input type = "button" id = "button_9" value = ""/>
+					</div>
+					<div class = "x">
+						<button type = 'button' class = "button_9"><span class = "letter-x">X</button>
+					</div>
+					<div class = "o">
+						<button type = 'button' class = "button_9"><span class = "letter-o">O</button>
+					</div>
+				</div>
+				
+		</div>
+	</body>
+</html>

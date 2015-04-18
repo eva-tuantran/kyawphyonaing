@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>My Music Website</title> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+});
+</script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+
+<!--<link rel="stylesheet" href="themes/android-theme.css" />
+<script type="text/javascript">
+var DEBUG_ANDROID_THEME=true
+</script>
+<script type="text/javascript" src="jquery.mobile.android-theme.js"></script>
+-->
+<style type="text/css">
+
+.ui-body-c {    background-image: url(musicbg.jpeg) !important;
+				background: width: 100%;  background-size: 100%;
+}
+
+p, h2{
+	font-style:italic;
+	font-size:12px;
+	text-align:center;
+}
+
+</style>
+
+
+
+</head> 
+<body> 
+<div data-role="page">
+		<div data-role="header" data-position="fixed" data-theme="a">
+      		<a href="#" data-role="button" data-icon="back" data-rel="back" class="hide-on-android" data-theme="c">Back</a>
+			<h1>My Music Website</h1>
+			<a href="http://www.kyawphyonaing.sakura.ne.jp/index.html" data-role="button" data-icon="home" class="ui-btn-right" id="home" data-theme="c">Home</a>
+		</div><!-- /header -->
+		<div data-role="content" data-theme="c" id="custion-content">
+        
+        	<ul id="list_todo" data-role="listview" data-inset="true" data-theme="c">
+		        <li>
+		            <a href="e_mail/index.html">
+		                <h2>Request And Suggest</h2>
+		                <p>If you want to listen anything,<br>If you want to say something,<br>Please sent the mail. </p>
+		            </a>
+		        </li>
+		    </ul>	
+		    
+		    <a href="myanmar/index.html" data-role="button" data-theme="b">Myanmar</a>
+		    <a href="japan/index.html" data-role="button" data-theme="a">J-pop</a>
+		    <a href="english/index.html" data-role="button" data-theme="b">English</a>
+		    <a href="korea/index.html" data-role="button" data-theme="a">K-pop</a>
+            <a href="login/index.html" data-role="button" data-theme="c">Specail Log in</a>
+		</div><!-- /content 
+		<div data-role="footer" data-position="fixed" data-theme="c">
+			<h3>&copy; Copyright <a href="http://kyawphyonaing.sakura.ne.jp">Kyaw Phyo Naing</a>.</h3>
+		</div><!-- /footer -->
+    <div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+		<ul>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/PCwebsite/index.php" data-icon="arrow-u" target="_blank">To PC Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/game/index.html" data-icon="info" data-transition="slideup">Game Website</a></li>
+		<li><a href="http://www.kyawphyonaing.sakura.ne.jp/education/index.html" data-icon="star" data-transition="pop">Education</a></li>
+		</ul>
+		</div>
+    </div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>

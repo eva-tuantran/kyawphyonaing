@@ -1,0 +1,101 @@
+ody{
+				background: #ffffff;
+			}
+			
+			
+			#wrapper{
+				width: 800px;
+				height: 800px;
+				position: absolute;
+				float: center;
+				margin: 1em 7em 5em 7em;
+			}
+			div.players{
+				width: 30em;
+				text-align: left;
+			}
+			.col button{
+				width: 15.56em;
+				height: 15.56em;
+				position: relative;
+				border: 1px solid #D0D9E6;
+				float: left;
+				cursor: pointer;
+				background: #ffffff;
+			}
+			.col button:hover{
+				background: #000;
+				opacity: 0.5;
+				-moz-opacity: 0.5;
+				filter:alpha(opacity=5);
+			}
+			span.text{
+				position: absolute;
+				margin-top: 0em;
+				font-size: 148px;
+				margin-top: -0.55em;
+				margin-left: -0.30em;
+			}
+			.x{
+
+				color: #ff0000 !important;
+			}
+			.o{
+				color: #49BCED !important;
+			}
+			button.reload{
+				width: 7em;
+				height: 2em;
+				font-weight: bold;
+				border: 1px solid #0F3B68;
+				cursor: pointer;
+				background: #18B0F2;
+				margin-bottom: 1em;
+				color: #003366;
+			}
+			button.reload:hover{
+				color: #9D2E2C;
+			}
+			div.created{
+				padding: 0.5em;
+				font-size: 14px;
+				color: #000;
+				position: relative;
+				float: right;
+				width: 10em;
+			}
+			
+			div.players span{
+				margin-left: 0.25em	;
+				color: #ff0000;
+				font-size: 12px !important;
+			}
+			div.players input{
+				border: 1px solid #18B0F2;
+				padding: 0.25em;
+				direction: rtl;
+				margin-left: 0.5em;
+				text-align: center;
+				margin-bottom: 0.15em;
+				color: #9D2E2C;
+			}
+			div.players input:hover{
+				background: #D0D9E6;
+			}
+			div.players input:focus{
+				background: #FAFF77;
+
+			}
+			div.players label{
+				color: #000;
+				margin-bottom: 0.15em;
+			}
+			div.scores legend, div.scores span{
+				color: #ff0000;
+			}
+			div.scores{
+				width: 20em;
+			}
+			div.scores span{
+				font-size: 14px;
+			}

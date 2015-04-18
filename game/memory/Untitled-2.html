@@ -1,0 +1,61 @@
+<!DOCTYPE>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Memory</title>
+</head>
+
+<body>
+<script>
+var found = 0;
+var last = null;
+(function(d){d.fn.shuffle=function(c){c=[];return this.each(function(){c.push(d(this).clone(true))}).each(function(a,b){d(b).replaceWith(c[a=Math.floor(Math.random()*c.length)]);c.splice(a,1)})};d.shuffle=function(a){return d(a).shuffle()}})(jQuery);
+
+$(document).ready(function(){
+    
+    $('#playCards td').shuffle();
+
+    $('img').each(function(index){
+      $(this).attr('id','img-' + index);
+    });    
+    
+    $('img').click(function(){
+      if( last ) {
+        if( ($(this).attr('src') == last.attr('src')) && ($(this).attr('id') != last.attr('id')) ) {
+          $(this).css('visibility', 'hidden');
+          last.css('visibility', 'hidden');
+          found++;
+        }
+        if (found == 3) {
+        alert('Here is your sticker!');
+        window.location.href = "#play1";
+        //reset found to 0
+        location.reload();
+        }
+        last = null;
+      } else {
+        last = $(this);
+      }
+    });
+    
+}); //end ready
+
+</script>
+<div id="playCards">
+                    <table>
+                        <tr>
+                            <td><img id="1a" src="http://oi47.tinypic.com/8winhl.jpg" /></td>
+                            <td><img id="2a" src="http://i47.tinypic.com/35cmsg5.jpg" /></td>
+                            <td><img id="3a" src="http://i49.tinypic.com/f1xdzm.jpg" /></td>
+                            
+                        </tr>
+                        <tr>
+                            
+                            <td><img id="1b" src="http://oi47.tinypic.com/8winhl.jpg" /></td>
+                            <td><img id="3b" src="http://i47.tinypic.com/35cmsg5.jpg" /></td>
+                            <td><img id="2b" src="http://i49.tinypic.com/f1xdzm.jpg" /></td>
+                        </tr>
+                    </table>
+                </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+//How to determine the first and last iteration in a foreach loop
+
+$i = 0;
+$len = count($array);
+foreach ($array as $item) {
+    if ($i == 0) {
+        // first
+    } else if ($i == $len - 1) {
+        // last
+    }
+    // …
+    $i++;
+}
+
+foreach($array as $element) {
+    if ($element === reset($array))
+        echo 'FIRST ELEMENT!';
+
+    if ($element === end($array))
+        echo 'LAST ELEMENT!';
+}
+
+//dailyreport from lastest reports and group by userid
+
+select
+                *
+                from
+                    TDailyReport
+                inner join
+                    TRequest on TRequest.reRequestID = TDailyReport.drRequestID
+                where
+                    drDeleteDate is null
+                    and reDeleteDate is null
+                group by
+                    reUserID    
+                order by
+                    drDailyReportID desc
+
+///////
+
+CREATE TABLE IF NOT EXISTS `TDailyReport` (
+  `drDailyReportID` int(11) NOT NULL AUTO_INCREMENT COMMENT '日報ID',
+  `drRequestID` int(11) NOT NULL DEFAULT '0' COMMENT '申し込みID',
+  `drHour9` int(2) NOT NULL DEFAULT '0' COMMENT '依頼内容の所要時間',
+  `drEvaluate` int(2) DEFAULT '0' COMMENT 'お客様の指向',
+  `drClean` int(2) DEFAULT '0' COMMENT '汚れ度合い',
+  `drInduction` int(2) DEFAULT '0' COMMENT 'お客様の汚れに対する感応度',
+  `drAnnounce1` tinyint(1) DEFAULT '0' COMMENT '器物破損について 0.有り/1.無し',
+  `drAnnounce2` tinyint(1) DEFAULT '0' COMMENT '直接取引について 0.有り/1.無し',
+  `drOtherRoomType` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'その他のRoomType',
+  `drNotes` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '部屋に入る際に気をつけること',
+  `drComment1` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '入室禁止の部屋',
+  `drComment2` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '掃除道具の場所',
+  `drComment3` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '掃除道具の準備状況',
+  `drComment4` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'お客様からの指示内容',
+  `drComment5` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '次回への持ち越し内容',
+  `drComment6` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'ご家族の特徴',
+  `drComment7` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'お客様の掃除頻度',
+  `drComment8` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '会話好きかそうでないか',
+  `drComment9` int(2) DEFAULT '0' COMMENT '次回いつ頃必要か？',
+  `drComment10` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'お客様の興味があること',
+  `drComment11` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'お客様にとって 触れてはいけない話題',
+  `drComment12` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'お客様がサービスを 利用した動機',
+  `drComment13` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '掃除スキルの レベルアップとして 気が付いた点があれば',
+  `drComment14` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'コミュニケーションスキルの レベルアップとして 気が付いた点があれば',
+  `drComment15` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '掃除以外にニーズが ありそうなサービス',
+  `drComment16` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'その他、お客様の満足度向 上のために気が付いた点',
+  `drComment17` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'その他、スタッフの満足度向 上のために気が付いた点',
+  `drDeleteDate` datetime DEFAULT NULL COMMENT '削除日',
+  `drRegistDate` datetime DEFAULT NULL COMMENT '登録日',
+  `drModifyDate` datetime DEFAULT NULL COMMENT '更新日',
+  PRIMARY KEY (`drDailyReportID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='DailyReportRepository' AUTO_INCREMENT=226 ;

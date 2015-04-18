@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/mainstyle.css" type="text/css" media="screen, mobile" title="main" charset="utf-8"/>
+        
+        <title>
+            Tic Tac Toe
+        </title>
+        
+        <script src="js/script.js">
+        </script>
+    </head>
+     
+     <body>
+        <div id="container">
+            <div id="topbar">
+                <p id="topbartext">
+             	Tic Tac Toe
+                </p>
+            </div>
+            
+            <div id="names">
+                <p class="nametext">
+                    Player 1: &nbsp
+                </p>
+                
+                <input type="text" class="nameinput" id="name1"/>
+                
+                <br/>
+                
+                <p class="nametext">
+                    Player 2: &nbsp
+                </p>
+                
+                <input type="text" class="nameinput" id="name2"/>
+            </div>
+            
+            <div id="mainbody">
+                
+                <p id="caption">
+                    Press START GAME to play
+                </p>
+                
+                <div id="boxcontainer">
+                    <div class="box" id="box1" onclick="Play('b1')">
+                        <p class="boxtext" id="b1">
+                        </p>
+                    </div>
+                    <div class="box" id="box2" onclick="Play('b2')">
+                        <p class="boxtext" id="b2">
+                        </p>
+                    </div>
+                    
+                    <div class="box" id="box3" onclick="Play('b3')">
+                        <p class="boxtext" id="b3">
+                        </p>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="box" id="box4" onclick="Play('b4')">
+                        <p class="boxtext" id="b4">
+                        </p>
+                    </div>
+                    
+                    <div class="box" id="box5" onclick="Play('b5')">
+                        <p class="boxtext" id="b5">
+                        </p>
+                    </div>
+                    
+                    <div class="box" id="box6" onclick="Play('b6')">
+                      <p class="boxtext" id="b6"><br/>
+                    
+                    </p>
+                    </div>
+                    <div class="box" id="box7" onclick="Play('b7')">
+                        <p class="boxtext" id="b7">
+                        </p>
+                    </div>
+                    
+                    <div class="box" id="box8" onclick="Play('b8')">
+                        <p class="boxtext" id="b8">
+                        </p>
+                    </div>
+                    
+                    <div class="box" id="box9" onclick="Play('b9')">
+                        <p class="boxtext" id="b9">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="starttab" onclick="Start()">
+                <p id="starttext">
+                    START GAME
+                </p>
+            </div>
+             <p style="text-align:center"><a href="../index.html">Home Page</a></p>
+        </div>
+    </body>
+</html> 
