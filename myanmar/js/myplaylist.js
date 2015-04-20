@@ -17,6 +17,15 @@
 
 var myPlaylist = [
 {
+    mp3:'mix/01Chay.mp3',
+    title:'Buddha Busaniya',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'4:01',
+    cover:'mix/.jpg'
+},
+
+{
         mp3:'mix/01 Buddha Busaniya@ MAMC .mp3',
         title:'Buddha Busaniya',
         artist:'Chan Chan',
