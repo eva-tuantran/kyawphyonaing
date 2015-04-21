@@ -18,7 +18,7 @@
 var myPlaylist = [
 {
     mp3:'mix/01Chay.mp3',
-    title:'Buddha Busaniya',
+    title:'Chay',
     artist:'Ye Yint Aung',
     buy:'',
     duration:'4:01',
