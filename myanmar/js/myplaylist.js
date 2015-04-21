@@ -22,7 +22,7 @@ var myPlaylist = [
     artist:'Ye Yint Aung',
     buy:'',
     duration:'4:01',
-    cover:'mix/.jpg'
+    cover:'mix/yeyintaung_chay.jpg'
 },
 
 {
