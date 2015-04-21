@@ -24,6 +24,86 @@ var myPlaylist = [
     duration:'4:01',
     cover:'mix/yeyintaung_chay.jpg'
 },
+{
+    mp3:'mix/02 Nint Na Na (Feat. Ni Ni Khin Zaw)@ MAMC.mp3',
+    title:'Nint Na Na',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:31',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/03 A Thel Kwal Luu Mite@ MAMC.mp3',
+    title:'Thel Kwal Luu Mite',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'2:24',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/04 Waiting For You@ MAMC.mp3',
+    title:'Waiting For You',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:34',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/05 Better Than Me (Feat.t thar thar) @ MAMC.mp3',
+    title:'Better Than Me',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:33',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/06 Min Yee Sarr Ko Pyaw Like @ MAMC.mp3',
+    title:'Min Yee Sarr Ko Pyaw Like',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:20',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/07 Ta Yout Htel Par Pel @ MAMC.mp3',
+    title:'Ta Yout Htel Par Pel',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:13',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/08 Kiss Me Quick (Feat. x-Box)@ MAMC.mp3',
+    title:'Kiss Me Quick',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'4:19',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/09 A Pyone (Or) A Shone @ MAMC.mp3',
+    title:'A Pyone',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:27',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/10 Min A May Tot Suu Tot Mar Bae (Feat. Lil Z) @ MAMC.mp3',
+    title:'Min A May Tot Suu Tot Mar Bae',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'3:52',
+    cover:'mix/yeyintaung_chay.jpg'
+},
+{
+    mp3:'mix/11 Kha Lay Lay X Nay The (Lullaby ) @ MAMC.mp3',
+    title:'Kha Lay Lay X Nay The',
+    artist:'Ye Yint Aung',
+    buy:'',
+    duration:'1:57',
+    cover:'mix/yeyintaung_chay.jpg'
+},
 
 {
         mp3:'mix/01 Buddha Busaniya@ MAMC .mp3',
